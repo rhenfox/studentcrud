@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.thymeleaf.org">
+    <head th:replace="commons/head::head" />
+    <body>
+        <div th:replace="commons/header-nav::nav-bar"></div>
+        <div class="container">
+            <div class="card my-2">
+                <p class="my-2 mx-2">
+                    <a href="/addStudent" class="btn btn-success ">Add Student</a>
+                </p>
+                <div class="card mx-2 my-2">
+                    <table class="table table-hover">
+                        <thead class="table table-primary">
+                            <tr>
+                                <th>First name</th>
+                                <th>Middle name</th>
+                                <th>Last name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="student:${students}">
+                                <td th:text="${student.firstname}"></td>
+                                <td th:text="${student.middlename}"></td>
+                                <td th:text="${student.lastname}"></td>
+                                <td class="col-1"><a th:href="@{/updateStudent/{id}(id=${student.id})}"><i class="fa fa-edit"></i></a></td>
+                                <td class="col-1"><a th:href="@{/delete/{id}(id=${student.id})}"><i class="fa fa-trash text-danger"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
